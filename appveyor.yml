@@ -8,8 +8,9 @@ matrix:
 #Do not build on tags
 skip_tags: true
 
-init:
-  - set PATH=C:\Qt\5.11.0\%qt%\bin;%PATH%
+init
+  - set QTDIR=C:\Qt\5.11.0\msvc2017_64
+  - set PATH=%QTDIR%\bin;%PATH%
   - set ORIGPATH=%PATH%
 
 environment:
@@ -19,7 +20,7 @@ install:
   - vcpkg install eigen3:x64-windows
 
 before_build:
-    - cd c:\%PROJECT_NAME%\
+    - cd c:\%APPVEYOR_BUILD_FOLDER%\
     - md build
 
 build_script:
@@ -28,9 +29,7 @@ build_script:
   - cmake --build . --config Release
 
 after_build:
-  - dir C:\Qt\5.11.0\%qt%\bin\
-  - C:\Qt\5.11.0\%qt%\bin\windeployqt.exe --no-opengl-sw --no-translations --no-system-d3d-compiler -no-angle C:\%PROJECT_NAME%\build\Release\appveyor.exe
-  - cd c:\%PROJECT_NAME%\
+  - %QTDIR%\bin\windeployqt.exe --no-opengl-sw --no-translations --no-system-d3d-compiler -no-angle C:\%PROJECT_NAME%\build\Release\appveyor.exe
   - 7z a %PROJECT_NAME%-win-x64.zip %APPVEYOR_BUILD_FOLDER%\build\Release\*
 
 test: off
