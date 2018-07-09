@@ -1,0 +1,37 @@
+environment:
+  matrix:
+  - example: appveyor
+    name: win36
+    platform: amd64_x86
+    qt: msvc2017
+
+clone_folder: c:\project
+shallow_clone: true
+
+#C:\Program Files (x86)\CMake\bin
+init:
+  - set PATH=C:\Qt\5.11.0\%qt%\bin;%PATH%
+  - set ORIGPATH=%PATH%
+  #- if not %platform%==mingw call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" %platform%
+  #- if not %platform%==mingw (set makefiles="NMake Makefiles") else (set makefiles="MinGW Makefiles")
+
+#install:
+
+before_build:
+    - cd c:\project\
+    - md build
+
+build_script:
+  - cd build
+  - cmake .. -G "Visual Studio 15 2017 Win64"
+
+#after_build:
+
+test: off
+
+
+matrix:
+  fast_finish: true
+
+artifacts:
+  - path: '*.7z'
