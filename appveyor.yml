@@ -19,7 +19,7 @@ install:
   - vcpkg install eigen3:x64-windows
 
 before_build:
-    - cd 'c:\%PROJECT_NAME%\'
+    - cd c:\%PROJECT_NAME%\
     - md build
 
 build_script:
@@ -29,8 +29,8 @@ build_script:
 
 after_build:
   - C:\Qt\5.11.0\%qt%\bin\windeployqt.exe --no-opengl-sw --no-translations --no-system-d3d-compiler -no-angle 'C:\%PROJECT_NAME%\build\Release\appveyor.exe'
-  - cd 'c:\%PROJECT_NAME%\'
-  - 7z a '%PROJECT_NAME%-win-x64.zip %APPVEYOR_BUILD_FOLDER%\build\Release\*'
+  - cd c:\%PROJECT_NAME%\
+  - 7z a %PROJECT_NAME%-win-x64.zip %APPVEYOR_BUILD_FOLDER%\build\Release\*
 
 test: off
 
