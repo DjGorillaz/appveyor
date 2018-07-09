@@ -5,6 +5,8 @@ clone_folder: c:\project
 shallow_clone: true
 matrix:
   fast_finish: true
+#Do not build on tags
+skip_tags: true
 
 init:
   - set PATH=C:\Qt\5.11.0\%qt%\bin;%PATH%
