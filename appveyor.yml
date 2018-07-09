@@ -28,7 +28,7 @@ build_script:
   - cmake --build . --config Release
 
 after_build:
-  - windeployqt.exe --no-opengl-sw --no-translations --no-system-d3d-compiler -no-angle C:\%PROJECT_NAME%\build\Release\appveyor.exe
+  - C:\Qt\5.11.0\%qt%\bin\windeployqt.exe --no-opengl-sw --no-translations --no-system-d3d-compiler -no-angle C:\%PROJECT_NAME%\build\Release\appveyor.exe
   - cd c:\%PROJECT_NAME%\
   - 7z a %PROJECT_NAME%-win-x64.zip %APPVEYOR_BUILD_FOLDER%\build\Release\*
 
