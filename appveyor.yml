@@ -15,14 +15,15 @@ init:
 before_build:
     - cd c:\project\
     - md build
+    - cd build
 
 build_script:
-  - cd build
   - cmake .. -G "Visual Studio 15 2017 Win64"
   - cmake --build . --config Release
 
 after_build:
-  - 7z a appveyor.zip %APPVEYOR_BUILD_FOLDER%\build\Release\*
+  - cd c:\project\
+  - 7z a appveyor.zip %APPVEYOR_BUILD_FOLDER%\Release\*
 
 test: off
 
