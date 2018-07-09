@@ -1,23 +1,14 @@
 image:
   - Visual Studio 2017
 
-environment:
-  matrix:
-  - example: appveyor
-    name: win36
-    platform: amd64_x86
-    qt: msvc2017
-
 clone_folder: c:\project
 shallow_clone: true
+fast_finish: true
 
-#C:\Program Files (x86)\CMake\bin
 init:
   - set PATH=C:\Qt\5.11.0\%qt%\bin;%PATH%
   - set ORIGPATH=%PATH%
-  #- call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
-  #- if not %platform%==mingw (set makefiles="NMake Makefiles") else (set makefiles="MinGW Makefiles")
-
+ 
 #install:
 
 before_build:
@@ -32,9 +23,14 @@ build_script:
 
 test: off
 
-
-matrix:
-  fast_finish: true
-
 artifacts:
-  - path: '*.7z'
+  - path: c:\project\build\Release
+    name: appveyor
+deploy:
+  provider: GitHub
+  tag: appveyor-v$(appveyor_build_version)
+  #release: $(APPVEYOR_REPO_BRANCH)-$(TARGET2)-win
+  description: App for windows
+  auth_token:
+    secure: RHuRwIcFSQ7rw2VLEAaqtzcPiviAnV4jtOibhY3EJF6HfleGKoLWOXbfxs/N9XJq
+  artifact: bin\release\artifacts.zip
