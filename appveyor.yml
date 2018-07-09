@@ -34,10 +34,10 @@ artifacts:
 deploy:
   release: appveyor-v$(appveyor_build_version)
   description: App for windows
-  tag: $(APPVEYOR_REPO_TAG_NAME)
+  #tag: $(APPVEYOR_REPO_TAG_NAME)
   provider: GitHub
   auth_token:
     secure: RHuRwIcFSQ7rw2VLEAaqtzcPiviAnV4jtOibhY3EJF6HfleGKoLWOXbfxs/N9XJq
-  artifact: \bin\appveyor.zip
+  artifact: appveyor.zip
   on:
     branch: master                 # release from master branch only
