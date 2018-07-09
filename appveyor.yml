@@ -42,4 +42,3 @@ deploy:
   on:
     branch: master                 # release from master branch only
     skip_tags: true
-    
