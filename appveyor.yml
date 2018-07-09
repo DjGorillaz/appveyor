@@ -26,7 +26,8 @@ build_script:
 test: off
 
 artifacts:
-  - path: build\Release
+  - path: build\Release\*
+    name artifacts
     
 deploy:
   provider: GitHub
@@ -35,4 +36,4 @@ deploy:
   description: App for windows
   auth_token:
     secure: RHuRwIcFSQ7rw2VLEAaqtzcPiviAnV4jtOibhY3EJF6HfleGKoLWOXbfxs/N9XJq
-  artifact: bin\release\artifacts.zip
+  artifact: artifacts.zip
