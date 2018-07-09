@@ -13,6 +13,7 @@ set(CMAKE_PREFIX_PATH "C:\\Qt\\5.11.0\\msvc2017_64\\")
 
 # Find the QtWidgets library
 find_package(Qt5Widgets CONFIG REQUIRED)
+find_package(Eigen3 CONFIG REQUIRED)    
 
 # Populate a CMake variable with the sources
 set(appveyor_SRCS
@@ -32,5 +33,6 @@ set_target_properties(appveyor PROPERTIES
 
 # Use the Widgets module from Qt 5
 target_link_libraries(appveyor Qt5::Widgets)
+target_link_libraries(appveyor PRIVATE Eigen3::Eigen)
 
 install(TARGETS appveyor RUNTIME DESTINATION bin)

@@ -15,6 +15,7 @@ init:
 #install:
 
 before_build:
+    - vcpkg install eigen3:x64-windows
     - cd c:\project\
     - md build
 
@@ -25,12 +26,12 @@ build_script:
 
 after_build:
   - cd c:\project\
-  - 7z a appveyor.zip %APPVEYOR_BUILD_FOLDER%\build\Release\*
+  - 7z a appveyor-win-x64.zip %APPVEYOR_BUILD_FOLDER%\build\Release\*
 
 test: off
 
 artifacts:
-  - path: appveyor.zip
+  - path: appveyor-win-x64.zip
     name: artifacts
     
 deploy:
@@ -40,6 +41,6 @@ deploy:
   provider: GitHub
   auth_token:
     secure: PTmCCvHOYwSne/qGWheaYLb15X89BkUzh/hi8Zem+P3oGsLn6pAMuY21IbpYk83I
-  artifact: appveyor.zip
+  artifact: appveyor-win-x64.zip
   #on:
   #  branch: master
