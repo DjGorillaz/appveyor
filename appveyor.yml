@@ -1,7 +1,11 @@
 image:
   - Visual Studio 2017
 
-clone_folder: c:\project
+environment:
+  projectname: %APPVEYOR_PROJECT_NAME%
+# projectname: appveyor  
+  
+clone_folder: c:\%projectname%
 shallow_clone: true
 matrix:
   fast_finish: true
@@ -12,11 +16,11 @@ init:
   - set PATH=C:\Qt\5.11.0\%qt%\bin;%PATH%
   - set ORIGPATH=%PATH%
  
-#install:
+install:
+  - vcpkg install eigen3:x64-windows
 
 before_build:
-    - vcpkg install eigen3:x64-windows
-    - cd c:\project\
+    - cd c:\%projectname%\
     - md build
 
 build_script:
@@ -25,22 +29,23 @@ build_script:
   - cmake --build . --config Release
 
 after_build:
-  - cd c:\project\
-  - 7z a appveyor-win-x64.zip %APPVEYOR_BUILD_FOLDER%\build\Release\*
+  - C:\Qt\5.11.0\%qt%\bin\windeployqt.exe --no-opengl-sw --no-translations --no-system-d3d-compiler -no-angle C:\%projectname%\build\Release\appveyor.exe 
+  - cd c:\%projectname%\
+  - 7z a %projectname%-win-x64.zip %APPVEYOR_BUILD_FOLDER%\build\Release\*
 
 test: off
 
 artifacts:
-  - path: appveyor-win-x64.zip
+  - path: %projectname%-win-x64.zip
     name: artifacts
     
 deploy:
   #release: appveyor-v$(appveyor_build_version)
   description: App for windows
-  tag: appveyor-v$(appveyor_build_version)
+  tag: %projectname%-v$(appveyor_build_version)
   provider: GitHub
   auth_token:
     secure: PTmCCvHOYwSne/qGWheaYLb15X89BkUzh/hi8Zem+P3oGsLn6pAMuY21IbpYk83I
-  artifact: appveyor-win-x64.zip
+  artifact: %projectname%-win-x64.zip
   #on:
   #  branch: master
