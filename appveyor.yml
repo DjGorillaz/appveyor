@@ -39,5 +39,5 @@ deploy:
   auth_token:
     secure: PTmCCvHOYwSne/qGWheaYLb15X89BkUzh/hi8Zem+P3oGsLn6pAMuY21IbpYk83I
   artifact: appveyor.zip
-  on:
-    branch: master
+  #on:
+  #  branch: master
