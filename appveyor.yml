@@ -27,7 +27,7 @@ test: off
 
 artifacts:
   - path: build\Release\*
-    name artifacts
+    name: artifacts
     
 deploy:
   provider: GitHub
