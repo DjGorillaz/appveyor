@@ -25,12 +25,11 @@ build_script:
 test: off
 
 artifacts:
-  - path: \Release\*
-    name: appveyor
+  - path: /Release/*
     
 deploy:
   provider: GitHub
-  tag: appveyor-v$(appveyor_build_version)
+  #tag: appveyor-v$(appveyor_build_version)
   #release: $(APPVEYOR_REPO_BRANCH)-$(TARGET2)-win
   description: App for windows
   auth_token:
