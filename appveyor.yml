@@ -8,7 +8,7 @@ matrix:
 #Do not build on tags
 skip_tags: true
 
-init
+init:
   - set QTDIR=C:\Qt\5.11.0\msvc2017_64
   - set PATH=%QTDIR%\bin;%PATH%
   - set ORIGPATH=%PATH%
@@ -29,7 +29,7 @@ build_script:
   - cmake --build . --config Release
 
 after_build:
-  - %QTDIR%\bin\windeployqt.exe --no-opengl-sw --no-translations --no-system-d3d-compiler -no-angle C:\%PROJECT_NAME%\build\Release\appveyor.exe
+  - \%QTDIR%\bin\windeployqt.exe --no-opengl-sw --no-translations --no-system-d3d-compiler -no-angle C:\%PROJECT_NAME%\build\Release\appveyor.exe
   - 7z a %PROJECT_NAME%-win-x64.zip %APPVEYOR_BUILD_FOLDER%\build\Release\*
 
 test: off
