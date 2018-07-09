@@ -21,18 +21,18 @@ build_script:
   - cmake .. -G "Visual Studio 15 2017 Win64"
   - cmake --build . --config Release
 
-#after_build:
+after_build:
+  - 7z a appveyor.zip %APPVEYOR_BUILD_FOLDER%\build\Release\*
 
 test: off
 
 artifacts:
-  - path: build\Release\*
+  - path: appveyor.zip
     name: artifacts
     
 deploy:
   provider: GitHub
-  #tag: appveyor-v$(appveyor_build_version)
-  #release: $(APPVEYOR_REPO_BRANCH)-$(TARGET2)-win
+  tag: appveyor-v$(appveyor_build_version)
   description: App for windows
   auth_token:
     secure: RHuRwIcFSQ7rw2VLEAaqtzcPiviAnV4jtOibhY3EJF6HfleGKoLWOXbfxs/N9XJq
