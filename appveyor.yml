@@ -3,7 +3,8 @@ image:
 
 clone_folder: c:\project
 shallow_clone: true
-fast_finish: true
+matrix:
+  fast_finish: true
 
 init:
   - set PATH=C:\Qt\5.11.0\%qt%\bin;%PATH%
@@ -26,6 +27,7 @@ test: off
 artifacts:
   - path: c:\project\build\Release
     name: appveyor
+    
 deploy:
   provider: GitHub
   tag: appveyor-v$(appveyor_build_version)
