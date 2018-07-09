@@ -15,15 +15,15 @@ init:
 before_build:
     - cd c:\project\
     - md build
-    - cd build
 
 build_script:
+  - cd build
   - cmake .. -G "Visual Studio 15 2017 Win64"
   - cmake --build . --config Release
 
 after_build:
   - cd c:\project\
-  - 7z a appveyor.zip %APPVEYOR_BUILD_FOLDER%\Release\*
+  - 7z a appveyor.zip %APPVEYOR_BUILD_FOLDER%\build\Release\*
 
 test: off
 
@@ -37,4 +37,4 @@ deploy:
   description: App for windows
   auth_token:
     secure: RHuRwIcFSQ7rw2VLEAaqtzcPiviAnV4jtOibhY3EJF6HfleGKoLWOXbfxs/N9XJq
-  artifact: artifacts.zip
+  artifact: appveyor.zip
