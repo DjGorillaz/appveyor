@@ -33,7 +33,7 @@ build_script:
   - cmake --build . --config Release
 
 after_build:
-  - \%QTDIR%\bin\windeployqt.exe --no-opengl-sw --no-translations --no-system-d3d-compiler -no-angle C:\%PROJECT_NAME%\build\Release\appveyor.exe
+  - C:\Qt\5.11.0\msvc2017_64\bin\windeployqt.exe --no-opengl-sw --no-translations --no-system-d3d-compiler -no-angle C:\%PROJECT_NAME%\build\Release\appveyor.exe
   - 7z a %PROJECT_NAME%-win-x64.zip %APPVEYOR_BUILD_FOLDER%\build\Release\*
 
 test: off
@@ -43,7 +43,7 @@ artifacts:
     name: artifacts
     
 deploy:
-  release: appveyor-v$(appveyor_build_version)
+  release: Appveyor release of v$(appveyor_build_version)
   description: App for windows
   tag: '%PROJECT_NAME%-v$(appveyor_build_version)'
   provider: GitHub
