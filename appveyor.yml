@@ -1,10 +1,6 @@
 image:
   - Visual Studio 2017
 
-environment:
-  projectname: appveyor
-# projectname: appveyor  
-  
 clone_folder: c:\%projectname%
 shallow_clone: true
 matrix:
@@ -15,6 +11,9 @@ skip_tags: true
 init:
   - set PATH=C:\Qt\5.11.0\%qt%\bin;%PATH%
   - set ORIGPATH=%PATH%
+ 
+ environment:
+  projectname: appveyor
  
 install:
   - vcpkg install eigen3:x64-windows
