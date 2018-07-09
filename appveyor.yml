@@ -21,7 +21,7 @@ before_build:
 
 build_script:
   - cd build
-  - cmake .. -G "Visual Studio 15 2017 Win64"
+  - cmake .. -G "Visual Studio 15 2017 Win64" -DCMAKE_TOOLCHAIN_FILE=c:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake
   - cmake --build . --config Release
 
 after_build:
