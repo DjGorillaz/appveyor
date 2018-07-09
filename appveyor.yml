@@ -11,10 +11,10 @@ skip_tags: true
 init:
   - set PATH=C:\Qt\5.11.0\%qt%\bin;%PATH%
   - set ORIGPATH=%PATH%
- 
+
  environment:
-  PROJECT_NAME: 'appveyor'
- 
+  PROJECT_NAME: appveyor
+  
 install:
   - vcpkg install eigen3:x64-windows
 
