@@ -2,9 +2,13 @@ image:
   - Visual Studio 2017
 
 clone_folder: c:\%PROJECT_NAME%
+
 shallow_clone: true
+
+#The build fail once the job fails
 matrix:
   fast_finish: true
+  
 #Do not build on tags
 skip_tags: true
 
@@ -20,7 +24,7 @@ install:
   - vcpkg install eigen3:x64-windows
 
 before_build:
-    - cd c:\%APPVEYOR_BUILD_FOLDER%\
+    - cd c:\%PROJECT_NAME%\
     - md build
 
 build_script:
@@ -39,7 +43,7 @@ artifacts:
     name: artifacts
     
 deploy:
-  #release: appveyor-v$(appveyor_build_version)
+  release: appveyor-v$(appveyor_build_version)
   description: App for windows
   tag: '%PROJECT_NAME%-v$(appveyor_build_version)'
   provider: GitHub
