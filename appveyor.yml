@@ -2,7 +2,7 @@ image:
   - Visual Studio 2017
 
 environment:
-  projectname: %APPVEYOR_PROJECT_NAME%
+  projectname: appveyor
 # projectname: appveyor  
   
 clone_folder: c:\%projectname%
