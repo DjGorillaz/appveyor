@@ -12,11 +12,6 @@ matrix:
 #Do not build on tags
 skip_tags: true
 
-init:
-  - set QTDIR=C:\Qt\5.11.1\msvc2017_64
-  - set PATH=%QTDIR%\bin;%PATH%
-  - set ORIGPATH=%PATH%
-
 environment:
   PROJECT_NAME: appveyor
   matrix:
@@ -32,13 +27,19 @@ environment:
     APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     configuration: Release
     platform: x64
-  
+
 install:
-  - vcpkg install eigen3:x64-windows
+  - set QTDIR=C:\Qt\5.11.1\msvc2017
+  - if "%platform%"=="x64" (set QDIR="%QDIR%_64")
+  - set PATH=%QTDIR%\bin;%PATH%
+  - set ORIGPATH=%PATH%
+  - vcpkg install eigen3:%configuration%-windows
 
 before_build:
-    - cd c:\%PROJECT_NAME%\
-    - md build
+  - set VS=Visual Studio %VS_VERSION%
+
+  - cd c:\%PROJECT_NAME%\
+  - md build
 
 build_script:
   - cd build
