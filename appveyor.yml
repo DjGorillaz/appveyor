@@ -18,14 +18,14 @@ environment:
     APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     configuration: Release
     platform: x86
-    QTDIR: "C:\Qt\5.11.1\msvc2017"
+    QTDIR: "C:\\Qt\\5.11.1\\msvc2017"
   - id: msvc-x64
     compiler: msvc-15
     generator: "Visual Studio 15 2017 Win64"
     APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     configuration: Release
     platform: x64
-    QTDIR: "C:\Qt\5.11.1\msvc2017_64"
+    QTDIR: "C:\\Qt\\5.11.1\\msvc2017_64"
 
 install:
   - set PATH=%QTDIR%\bin;%PATH%
