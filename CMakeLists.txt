@@ -11,7 +11,7 @@ set(CMAKE_AUTOMOC ON)
 # Create code from a list of Qt designer ui files
 set(CMAKE_AUTOUIC ON)
 
-set(CMAKE_PREFIX_PATH "C:\\Qt\\5.11.0\\msvc2017_64\\")
+#set(CMAKE_PREFIX_PATH "C:\\Qt\\5.11.0\\msvc2017_64\\")
 
 # Find the QtWidgets library
 find_package(Qt5Widgets CONFIG REQUIRED)
