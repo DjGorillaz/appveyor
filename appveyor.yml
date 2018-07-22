@@ -33,7 +33,7 @@ install:
   - if "%platform%"=="x64" (set QDIR="%QDIR%_64")
   - set PATH=%QTDIR%\bin;%PATH%
   - set ORIGPATH=%PATH%
-  - vcpkg install eigen3:%configuration%-windows
+  - vcpkg install eigen3:%platform%-windows
 
 before_build:
   - set VS=Visual Studio %VS_VERSION%
