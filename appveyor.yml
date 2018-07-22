@@ -12,21 +12,18 @@ skip_tags: true
 environment:
   PROJECT_NAME: appveyor
   matrix:
-  - image: VS-2017
-
-    matrix:
-    - id: msvc-x86
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      compiler: msvc-15
-      generator: "Visual Studio 15 2017"
-      platform: x86
-      QTDIR: "C:\\Qt\\5.11.1\\msvc2017_64"
-    - id: msvc-x64
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      compiler: msvc-15
-      generator: "Visual Studio 15 2017 Win64"
-      platform: x64
-      QTDIR: "C:\\Qt\\5.11.1\\msvc2017_64"
+  - id: msvc-x86
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    compiler: msvc-15
+    generator: "Visual Studio 15 2017"
+    platform: x86
+    QTDIR: "C:\\Qt\\5.11.1\\msvc2017_64"
+  - id: msvc-x64
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    compiler: msvc-15
+    generator: "Visual Studio 15 2017 Win64"
+    platform: x64
+    QTDIR: "C:\\Qt\\5.11.1\\msvc2017_64"
 
 configuration:
   - Release
