@@ -45,7 +45,7 @@ build_script:
 after_build:
   - windeployqt.exe --no-opengl-sw --no-translations --no-system-d3d-compiler -no-angle C:\%PROJECT_NAME%\build\%configuration%\appveyor.exe
   - cd C:\%PROJECT_NAME%\
-  - 7z a %PROJECT_NAME%-win-x64.zip %APPVEYOR_BUILD_FOLDER%\build\%configuration%\*
+  - 7z a %PROJECT_NAME%-win-%platform%.zip %APPVEYOR_BUILD_FOLDER%\build\%configuration%\*
 
 test: off
 
