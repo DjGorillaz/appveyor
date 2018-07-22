@@ -7,6 +7,7 @@ shallow_clone: true
 
 platform:
   - x86
+  - x64
   - Any CPU
   
 configuration:
@@ -20,7 +21,7 @@ matrix:
 skip_tags: true
 
 init:
-  - set QTDIR=C:\Qt\5.11.0\msvc2017_64
+  - set QTDIR=C:\Qt\5.11.1\msvc2017_64
   - set PATH=%QTDIR%\bin;%PATH%
   - set ORIGPATH=%PATH%
 
