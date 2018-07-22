@@ -30,14 +30,12 @@ environment:
 
 install:
   - set QTDIR=C:\Qt\5.11.1\msvc2017
-  - if "%platform%"=="x64" (set QDIR="%QDIR%_64")
+  - if "%platform%"=="x64" (set QTDIR="%QTDIR%_64")
   - set PATH=%QTDIR%\bin;%PATH%
   - set ORIGPATH=%PATH%
   - vcpkg install eigen3:%platform%-windows
 
 before_build:
-  - set VS=Visual Studio %VS_VERSION%
-
   - cd c:\%PROJECT_NAME%\
   - md build
 
